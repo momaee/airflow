@@ -117,6 +117,8 @@ Now you need to install the Airflow provider for Kubernetes.
 pip install apache-airflow-providers-cncf-kubernetes
 ```
 
+For more information, you can check this [link](https://airflow.apache.org/docs/apache-airflow-providers-cncf-kubernetes/stable/index.html).
+
 ### Run the Kubernetes DAG
 
 Now you can run the Kubernetes DAG by going to the Airflow UI and turning on the `kubernetes` DAG. Every time you run the DAG, it will create a new pod in the minikube cluster and run the task in that pod. The pod will be deleted after the task is done. To catch the logs of the pod, you can use the following command.
