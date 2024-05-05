@@ -24,7 +24,7 @@ def _training_model(model):
 
 with DAG("simple",
          start_date=datetime(2023, 1, 1),
-         schedule_interval='@daily',
+         schedule='@daily',
          catchup=False):
 
     training_model_tasks = [
@@ -53,3 +53,5 @@ with DAG("simple",
     )
 
     training_model_tasks >> choose_best_model >> [accurate, inaccurate]
+
+print("DAG has been created")

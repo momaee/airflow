@@ -1,13 +1,13 @@
+from pendulum import today
+
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import \
     KubernetesPodOperator
-from airflow.utils.dates import days_ago
 
 with DAG(
     "kubernetes",
     default_args={"owner": "airflow"},
-    schedule_interval=None,
-    start_date=days_ago(2),
+    start_date=today().add(days=-1),
     tags=["example"],
 ) as dag:
     k = KubernetesPodOperator(
@@ -21,16 +21,3 @@ with DAG(
     )
 
     k
-
-
-# k = KubernetesPodOperator(
-#     name="hello-dry-run",
-#     image="debian",
-#     cmds=["bash", "-cx"],
-#     arguments=["echo", "10"],
-#     labels={"foo": "bar"},
-#     task_id="dry_run_demo",
-#     do_xcom_push=True,
-# )
-
-# k.dry_run()
