@@ -76,3 +76,51 @@ Then you need to reset the database.
 ```bash
 airflow db reset
 ```
+
+## Kubernetes DAG
+
+For running the Kubernetes DAG locally, you need to install `kubectl` and `minikube`.
+
+### Kubectl
+
+You can use this [link](https://kubernetes.io/docs/tasks/tools/) to install `kubectl`.
+
+### Minikube
+
+You can use this [link](https://minikube.sigs.k8s.io/docs/start/) to install `minikube`.
+
+### Start minikube
+
+After installing `kubectl` and `minikube`, you can start the minikube cluster by running the following command.
+
+```bash
+minikube start
+```
+
+Then you should see the minikube cluster running by running the following command.
+
+```bash
+kubectl get nodes
+```
+
+or
+
+```bash
+kubectl cluster-info
+```
+
+### Install Airflow Provider for Kubernetes
+
+Now you need to install the Airflow provider for Kubernetes.
+
+```bash
+pip install apache-airflow-providers-cncf-kubernetes
+```
+
+### Run the Kubernetes DAG
+
+Now you can run the Kubernetes DAG by going to the Airflow UI and turning on the `kubernetes` DAG. Every time you run the DAG, it will create a new pod in the minikube cluster and run the task in that pod. The pod will be deleted after the task is done. To catch the logs of the pod, you can use the following command.
+
+```bash
+watch kubectl get pods -A 
+```
