@@ -17,6 +17,8 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 ```
 
+Please note you may don't have `python` but `python3` in your system. In that case, you need to replace `python` with `python3` in the above command.
+
 ## Check Installation
 
 ```bash

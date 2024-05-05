@@ -39,7 +39,7 @@ from airflow.operators.python import PythonOperator
 
 # [START instantiate_dag]
 with DAG(
-    "tutorial_dag",
+    "tutorial",
     # [START default_args]
     # These args will get passed on to each operator
     # You can override them on a per-task basis during operator initialization
@@ -131,6 +131,6 @@ with DAG(
 
     extract_task >> transform_task >> load_task
 
-# [END main_flow]
+    # [END main_flow]
 
 # [END tutorial]
